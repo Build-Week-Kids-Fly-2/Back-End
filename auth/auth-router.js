@@ -28,9 +28,10 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
     // implement login
-    let { username, password } = req.body; // << deconstruct the username & pw from the body
+    let { email, password } = req.body; // << deconstruct the username & pw from the body
+    console.log("Username: " + email, "Password" + password)
   
-    Users.findBy({ username }) // << look in our DB for the username provided from the body
+    Users.findBy({ email }) // << look in our DB for the username provided from the body
       .first() // << the first one to match, unique usernames only so there are no dupes
       .then(user => {
         if(user && bcrypt.compareSync(password, user.password)) {
@@ -38,7 +39,7 @@ router.post('/login', (req, res) => {
           const token = generateToken(user);
           // add that token to the response
           res.status(200).json({
-            message: `Welcome ${user.username}!`,
+            message: `Welcome ${user.email}!`,
             token
           });
         } else {
