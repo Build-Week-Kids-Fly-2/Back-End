@@ -4,19 +4,19 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // will need my usersmodel and secrets
-const Users = require('../users/users.model.js');
+const Users = require('../admin/admin.model.js');
 const secrets = require('../config/secrets.js');
 
 
-router.post('/register', (req, res) => {
+router.post('/admin/register', (req, res) => {
     // implement registration
-    let user = req.body;
+    let admin = req.body;
 
-    const hash = bcrypt.hashSync(user.password, 8); // << create a constant that will hash our password from the user
+    const hash = bcrypt.hashSync(admin.password, 8); // << create a constant that will hash our password from the user
 
-    user.password = hash; // << set the password to the hash so the DB never sees the real password
+    admin.password = hash; // << set the password to the hash so the DB never sees the real password
 
-    Users.add(user)
+    Users.add(admin)
         .then(saved => {
             res.status(201).json(saved)
         })
@@ -26,20 +26,20 @@ router.post('/register', (req, res) => {
 });
 
 
-router.post('/login', (req, res) => {
+router.post('/admin/login', (req, res) => {
     // implement login
     let { email, password } = req.body; // << deconstruct the username & pw from the body
     console.log("Username: " + email, "Password " + password)
   
     Users.findBy({ email }) // << look in our DB for the username provided from the body
       .first() // << the first one to match, unique usernames only so there are no dupes
-      .then(user => {
-        if(user && bcrypt.compareSync(password, user.password)) {
+      .then(admin => {
+        if(admin && bcrypt.compareSync(password, admin.password)) {
           // if true, create JWT
-          const token = generateToken(user);
+          const token = generateToken(admin);
           // add that token to the response
           res.status(200).json({
-            message: `Welcome ${user.email}!`,
+            message: `Welcome ${admin.email}!`,
             token
           });
         } else {
@@ -55,12 +55,12 @@ router.post('/login', (req, res) => {
 
 
 // Generate a token
-function generateToken(user) {
+function generateToken(admin) {
 
     // 1 Create Payload
     const payload = {
-      username: user.username,
-      subject: user.id
+      username: admin.username,
+      subject: admin.id
     }
   
     // 2 Create secret - will use dynamic instead for production purposes
