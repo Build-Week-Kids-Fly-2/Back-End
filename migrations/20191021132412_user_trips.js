@@ -27,22 +27,22 @@ exports.up = function(knex) {
       tbl.string('airline', 128)
           .notNullable();
   
-      tbl.string('flight-number', 128)
+      tbl.string('flightNumber', 128)
           .notNullable();
   
-      tbl.string('departure-time', 128)
+      tbl.string('departureTime', 128)
           .notNullable();
   
-      tbl.integer('carry-on-bags', 3)
+      tbl.integer('carryOnBags', 3)
           .notNullable();
   
-      tbl.integer('checked-bags', 3)
+      tbl.integer('checkedBags', 3)
           .notNullable();
   
       tbl.integer('children', 3)
           .notNullable();
   
-      tbl.time('arrival-time', { precision: 6 })
+      tbl.time('arrivalTime', { precision: 6 })
           .notNullable();
     })
   };
