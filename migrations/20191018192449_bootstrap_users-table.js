@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('users', tbl => {
       // ID
       tbl.increments()
-        .notNullable();
+        // .notNullable();
 
     // email column
     tbl.string('email', 128)
@@ -12,23 +12,23 @@ exports.up = function(knex) {
 
     // password column
     tbl.string('password', 128)
-        .notNullable(); // required
+        // .notNullable(); // required
 
     // full name column
     tbl.string('fullName', 255)
-        .notNullable(); // required
+        // .notNullable(); // required
 
     // address column
     tbl.string('address', 255)
-        .notNullable(); // required
+        // .notNullable(); // required
 
     // phone # column
     tbl.string('phone', 20)
-        .notNullable(); // required
+        // .notNullable(); // required
 
     // local airport column
     tbl.string('localAirport', 255)
-        .notNullable(); // required
+        // .notNullable(); // required
   })
 };
 
