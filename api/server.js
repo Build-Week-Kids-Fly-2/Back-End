@@ -21,4 +21,8 @@ server.use('/api/users', userRouter);
 server.use('/api/auth', authRouter);
 server.use('/api/auth', authAdmin);
 
+server.get('/', (req, res) => {
+    res.send('Kids Fly API is up and running!')
+})
+
 module.exports = server;
