@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const Users = require('../users/users.model.js');
 const secrets = require('../config/secrets.js');
 
-// router.get('/', (req, res) => {
+// router.get('/users', (req, res) => {
 //   let user = req.body;
 //   Users.find(user)
 //     .then(u => {
@@ -17,7 +17,6 @@ const secrets = require('../config/secrets.js');
 //       res.status(500).json({ message: "There was an error retrieiving all users." })
 //     })
 // })
-
 
 router.post('/register', (req, res) => {
     // implement registration

@@ -8,7 +8,7 @@ const Users = require('../admin/admin.model.js');
 const secrets = require('../config/secrets.js');
 
 
-router.post('/admin/register', (req, res) => {
+router.post('/register', (req, res) => {
     // implement registration
     let admin = req.body;
 
@@ -26,7 +26,7 @@ router.post('/admin/register', (req, res) => {
 });
 
 
-router.post('/admin/login', (req, res) => {
+router.post('/login', (req, res) => {
     // implement login
     let { email, password } = req.body; // << deconstruct the username & pw from the body
     console.log("Username: " + email, "Password " + password)

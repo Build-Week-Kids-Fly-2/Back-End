@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
             }
         })
         .catch(err => {
-            res.status(500).json({ message: "there was an issue with that request." })
+            res.status(500).json({ message: "there was an issue with that request.", err })
         })
 });
 

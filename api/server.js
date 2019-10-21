@@ -19,7 +19,7 @@ server.use(cors());
 // server use routers
 server.use('/api/users', userRouter);
 server.use('/api/auth', authRouter);
-server.use('/api/auth', authAdmin);
+server.use('/api/auth/admin', authAdmin);
 
 server.get('/', (req, res) => {
     res.send('Kids Fly API is up and running!')
