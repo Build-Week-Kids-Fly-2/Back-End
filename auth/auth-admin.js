@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 // will need my usersmodel and secrets
 const Users = require('../admin/admin.model.js');
 const secrets = require('../config/secrets.js');
+const UserTrips = require('../user_trips/user_trips.model.js');
 
 
 router.post('/register', (req, res) => {
@@ -50,6 +51,22 @@ router.post('/login', (req, res) => {
         res.status(500).json({ message: "There was a server error when loggin in." })
       })
   });
+
+
+
+// GET all user_trips 
+router.get('/', (req, res) => {
+  
+  let allTrips = req.body;
+
+  UserTrips.find(allTrips)
+    .then(t => {
+      res.status(200).json(t)
+    })
+    .catch(err => {
+      res.status(500).json({ message: "There was an error retriving the list of guests trips." })
+    })
+})
   
 
 

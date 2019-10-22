@@ -4,7 +4,8 @@ const db = require('../database/dbConfig.js');
 module.exports = {
     add,
     findById,
-    find
+    find,
+    adminFind
 }
 
 async function add(trip) {
@@ -26,4 +27,8 @@ function findById(id) {
 
 function find() {
     return db('user_trips').select('id', 'airport', 'departureTime', 'children');
+}
+
+function adminFind() {
+    return db('user_trips').select('id','arrived', 'airport', 'children', 'carryOnBags');
 }
