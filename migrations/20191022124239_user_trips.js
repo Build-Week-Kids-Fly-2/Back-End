@@ -42,10 +42,10 @@ exports.up = function(knex) {
       tbl.integer('children', 3)
           .notNullable();
   
-    //   tbl.string('arrived', 128)
-    //       .notNullable();
+      tbl.integer('arrived', 128)
+          .notNullable();
 
-        tbl.string('en_route', 128)
+        tbl.integer('en_route', 128)
             .notNullable();
     })
   };
