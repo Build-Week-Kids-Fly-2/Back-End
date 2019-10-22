@@ -5,7 +5,7 @@ exports.seed = function(knex) {
   // .truncate()
   //   .then(function () {
   //     // Inserts seed entries
-      return knex('trips').insert([
+      return knex('trip-table').insert([
         {name: 'Milano Italy'},
         {name: 'New York City'},
         {name: 'Cape Town South Africa'},
