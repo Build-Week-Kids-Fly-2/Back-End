@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('user_tripss', tbl => {
+    return knex.schema.createTable('user_trips', tbl => {
       tbl.increments();
   
       // FK for users table
@@ -51,6 +51,6 @@ exports.up = function(knex) {
   };
   
   exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('user_tripss')
+    return knex.schema.dropTableIfExists('user_trips')
   };
   
