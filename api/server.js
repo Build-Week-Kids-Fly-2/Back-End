@@ -7,6 +7,8 @@ const cors = require('cors');
 const userRouter = require('../users/users-router.js');
 const authRouter = require('../auth/auth-router.js');
 const authAdmin = require('../auth/auth-admin.js');
+const userTrips = require('../trips/trips.js');
+
 
 // Create server w epress
 const server = express();
@@ -20,6 +22,7 @@ server.use(cors());
 server.use('/api/users', userRouter);
 server.use('/api/auth', authRouter);
 server.use('/api/auth/admin', authAdmin);
+server.use('/api/trips', userTrips);
 
 server.get('/', (req, res) => {
     res.send('Kids Fly API is up and running!')

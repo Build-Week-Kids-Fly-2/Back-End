@@ -42,8 +42,11 @@ exports.up = function(knex) {
       tbl.integer('children', 3)
           .notNullable();
   
-      tbl.time('arrivalTime', { precision: 6 })
+      tbl.boolean('arrived', 2)
           .notNullable();
+
+        tbl.boolean('en_route', 2)
+            .notNullable();
     })
   };
   
