@@ -29,7 +29,7 @@ module.exports = {
 
   // needed for heroku
   production: {
-    client: 'pg', // < heroku postgreS
+    client: 'postgresql', // < heroku postgreS
     connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
