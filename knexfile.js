@@ -27,18 +27,19 @@ module.exports = {
     }
   },
 
+  // needed for heroku
   production: {
-    client: 'pg',
+    client: 'pg', // < heroku postgreS
     connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      directory: './migrations'
+      directory: './migrations',
     },
     seeds: {
-      directory: './seeds'
+      directory: './seeds',
     }
   }
 
