@@ -6,7 +6,7 @@ exports.up = function(knex) {
       // FK for users table
       tbl.integer('user_id', 10)
           .unsigned() // << forces integer to be positive
-        //   .notNullable()
+          .notNullable()
           .references('id') // < which column is being referenced?
           .inTable('users') // << reference the column above in which table?
           .onUpdate('CASCADE')
@@ -15,7 +15,7 @@ exports.up = function(knex) {
           // FK for trips table
       tbl.integer('trip_id', 10)
           .unsigned() // << forces integer to be positive
-        //   .notNullable()
+          .notNullable()
           .references('id') // < which column is being referenced?
           .inTable('trips') // << reference the column above in which table?
           .onUpdate('CASCADE') // << updates all referencing records
