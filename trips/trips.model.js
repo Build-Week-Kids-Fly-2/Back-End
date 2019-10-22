@@ -16,10 +16,12 @@ module.exports = {
     return db('trips').where(filter);
   }
   
-  
+
   function findById(id) {
     return db('trips')
       .where({ id })
       .first();
   }
+
+  
   
