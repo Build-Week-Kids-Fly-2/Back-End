@@ -3,23 +3,23 @@ exports.up = function(knex) {
     return knex.schema.createTable('user_trips', tbl => {
       tbl.increments();
   
-      // FK for users table
-    //   tbl.integer('user_id', 10)
-    //       .unsigned() // << forces integer to be positive
-    //       .notNullable()
-    //       .references('id') // < which column is being referenced?
-    //       .inTable('users') // << reference the column above in which table?
-    //       .onUpdate('CASCADE')
-    //       .onDelete('CASCADE');
+    //   FK for users table
+      tbl.integer('user_id', 10)
+          .unsigned() // << forces integer to be positive
+          .notNullable()
+          .references('id') // < which column is being referenced?
+          .inTable('users') // << reference the column above in which table?
+          .onUpdate('CASCADE')
+          .onDelete('CASCADE');
   
-    //       // FK for trips table
-    //   tbl.integer('trip_id', 10)
-    //       .unsigned() // << forces integer to be positive
-    //       .notNullable()
-    //       .references('id') // < which column is being referenced?
-    //       .inTable('trips') // << reference the column above in which table?
-    //       .onUpdate('CASCADE') // << updates all referencing records
-    //       .onDelete('CASCADE'); // << deletes all referencing records
+          // FK for trips table
+      tbl.integer('trip_id', 10)
+          .unsigned() // << forces integer to be positive
+          .notNullable()
+          .references('id') // < which column is being referenced?
+          .inTable('trips') // << reference the column above in which table?
+          .onUpdate('CASCADE') // << updates all referencing records
+          .onDelete('CASCADE'); // << deletes all referencing records
   
       tbl.string('airport', 128)
           .notNullable();
@@ -42,10 +42,12 @@ exports.up = function(knex) {
       tbl.integer('children', 3)
           .notNullable();
   
-      tbl.boolean('arrived', 2)
+      tbl.boolean('arrived')
+      .defaultTo(0)
           .notNullable();
 
-        tbl.boolean('en_route', 2)
+        tbl.boolean('en_route')
+        .defaultTo(0)
             .notNullable();
     })
   };
