@@ -1,7 +1,10 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('users').del()
+  return knex('users')
+  .set('FOREIGN_KEY_CHECKS', '=', 0)
+  .truncate()
+  .set('FOREIGN_KEY_CHECKS', '=', 1)
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
