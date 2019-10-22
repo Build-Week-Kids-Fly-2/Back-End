@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('admin-table', tbl => {
+    return knex.schema.createTable('admin', tbl => {
         tbl.increments();
   
         tbl.string('email', 50)
@@ -22,5 +22,5 @@ exports.up = function(knex) {
   };
   
   exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('admin-table')
+    return knex.schema.dropTableIfExists('admin')
   };
