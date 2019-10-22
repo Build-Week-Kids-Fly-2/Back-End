@@ -9,13 +9,13 @@ module.exports = {
 }
 
 async function add(trip) {
-const [id] = await db('user_trips').insert(trip, 'id')
+const [id] = await db('user_tripss').insert(trip, 'id')
 
 return findMyId(id)
 }
 
 function findMyId(id) {
-    return db('user_trips')
+    return db('user_tripss')
     .where({ id }).first()
 }
 
@@ -26,9 +26,9 @@ function findById(id) {
 }
 
 function find() {
-    return db('user_trips').select('id', 'airport', 'departureTime', 'children');
+    return db('user_tripss').select('id', 'airport', 'departureTime', 'children');
 }
 
 function adminFind() {
-    return db('user_trips').select('id','arrived', 'airport', 'children', 'carryOnBags');
+    return db('user_tripss').select('id','arrived', 'airport', 'children', 'carryOnBags');
 }
