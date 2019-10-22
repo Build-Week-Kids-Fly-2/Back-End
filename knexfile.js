@@ -9,17 +9,6 @@ module.exports = {
       filename: './database/kidsfly.db3' // << creates a db3 file for me
     },
     useNullAsDefault: true, // << prevents crashes when working with sqlite3.
-    migrations: {
-      directory: './migrations',
-    },
-    seeds: {
-      directory: './seeds'
-    },
-    pool: {
-      afterCreate: (connection, done) => {
-        connection.run('PRAGMA foreign_keys = ON', done)
-      },
-    },
   },
 
   staging: {

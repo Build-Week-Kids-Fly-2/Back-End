@@ -10,7 +10,6 @@ const authAdmin = require('../auth/auth-admin.js');
 const userTrips = require('../trips/trips.js');
 const user_trips = require('../user_trips/user_trips.js');
 
-
 // Create server w epress
 const server = express();
 
