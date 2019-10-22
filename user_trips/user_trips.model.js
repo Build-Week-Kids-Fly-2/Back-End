@@ -9,7 +9,7 @@ module.exports = {
 }
 
 async function add(trip) {
-const [id] = await db('user_trips').insert(trip)
+const [id] = await db('user_trips').insert(trip, 'id')
 
 return findMyId(id)
 }

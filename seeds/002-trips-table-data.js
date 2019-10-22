@@ -8,6 +8,6 @@ exports.seed = function(knex) {
         {name: 'Milano Italy'},
         {name: 'New York City'},
         {name: 'Cape Town South Africa'},
-      ]);
+      ], 'id');
     });
 };
