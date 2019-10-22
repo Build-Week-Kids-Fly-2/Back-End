@@ -2,9 +2,7 @@
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('user_trips')
-  .set('FOREIGN_KEY_CHECKS', '=', 0)
   .truncate()
-  .set('FOREIGN_KEY_CHECKS', '=', 1)
     .then(function () {
       // Inserts seed entries
       return knex('user_trips').insert([
