@@ -24,4 +24,47 @@ router.post('/user_trips', (req, res) => {
 })
 
 
+//PUT (update) the trip
+router.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const trip = req.body;
+
+    console.log(trip)
+
+    try {
+        const updated = await UserTrips.update(id, trip)
+        console.log(updated)
+        if(updated) {
+            const newTrip = await UserTrips.findMyId(id)
+            res.status(200).json(newTrip)
+        } else {
+            res.status(404).json({ message: "Invalid user trip id." })
+        }
+    } catch(err) {
+        res.status(500).json({ message: "There was a server error while updating the new trip." })
+    }
+})
+
+
+
+
+
+// DELETE the trip
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const trip = await UserTrips.findMyId(id)
+        if(trip) {
+            const deleted = await UserTrips.remove(id)
+            res.status(200).json(trip)
+        } else {
+            res.status(404).json({ message: "Invalid user trip id. "})
+        }
+    } catch {
+        res.status(500).json({ message: "There was a server error deleting that trip." })
+    }
+})
+
+
 module.exports = router;

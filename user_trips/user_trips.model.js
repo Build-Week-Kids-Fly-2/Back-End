@@ -5,7 +5,10 @@ module.exports = {
     add,
     findById,
     find,
-    adminFind
+    adminFind,
+    update,
+    findMyId,
+    remove
 }
 
 async function add(trip) {
@@ -26,9 +29,21 @@ function findById(id) {
 }
 
 function find() {
-    return db('user_trips').select('id', 'airport', 'departureTime', 'children');
+    return db('user_trips').select('id', 'airport', 'airline', 'flightNumber', 'departureTime', 'carryOnBags', 'checkedBags', 'children', 'arrived', 'en_route');
 }
 
 function adminFind() {
     return db('user_trips').select('id','arrived', 'airport', 'children', 'carryOnBags');
+}
+
+function update(id, changes) {
+    return db('user_trips')
+        .where({ id })
+        .update(changes)
+}
+
+function remove(id) {
+    return db('user_trips')
+    .where('id', id)
+    .del();
 }
