@@ -6,9 +6,10 @@ const jwt = require('jsonwebtoken');
 // will need my usersmodel and secrets
 const Users = require('../users/users.model.js');
 const secrets = require('../config/secrets.js');
+const authorize = require('./auth-middleware.js');
 
 router.get('/', (req, res) => {
-  let user = req.body;
+
   Users.find()
     .then(u => {
       res.status(200).json(u)

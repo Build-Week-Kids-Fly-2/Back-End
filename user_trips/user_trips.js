@@ -1,8 +1,8 @@
 const router = require('express').Router();
-
 const UserTrips = require('./user_trips.model.js');
+const authenticate = require('../auth/auth-middleware.js');
 
-router.get('/', (req, res) => {
+router.get('/', authenticate, (req, res) => {
     UserTrips.find()
         .then(trips => {
             res.status(200).json(trips)

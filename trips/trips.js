@@ -1,10 +1,10 @@
 // Imports needed - express.Router() + trips model
 
 const router = require('express').Router();
-
 const Trips = require('./trips.model.js');
+const authenticate = require('../auth/auth-middleware.js');
 
-router.get('/', (req, res) => {
+router.get('/', authenticate, (req, res) => {
     Trips.find()
         .then(trips => {
             res.status(200).json(trips)

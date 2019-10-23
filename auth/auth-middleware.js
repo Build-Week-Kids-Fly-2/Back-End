@@ -1,6 +1,6 @@
 // Import needed are jwt and secrets
 const jwt = require('jsonwebtoken');
-const secrets = require('../config/secrets.js');
+const secrets = require('../config/secrets.js');;
 
 module.exports = (req, res, next) => {
     // 1 create token for headers.auth
