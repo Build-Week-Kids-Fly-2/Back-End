@@ -9,7 +9,7 @@ router.get('/', authenticate, (req, res) => {
         })
 })
 
-router.post('/user_trips', (req, res) => {
+router.post('/add', (req, res) => {
 
     let newTrip = req.body;
 

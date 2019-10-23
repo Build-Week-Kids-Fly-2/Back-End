@@ -7,16 +7,16 @@ const jwt = require('jsonwebtoken');
 const Users = require('../users/users.model.js');
 const secrets = require('../config/secrets.js');
 
-// router.get('/', (req, res) => {
+router.get('/', (req, res) => {
 
-//   Users.find()
-//     .then(u => {
-//       res.status(200).json(u)
-//     })
-//     .catch(err => {
-//       res.status(500).json({ message: "There was an error retrieiving all users." })
-//     })
-// })
+  Users.find()
+    .then(u => {
+      res.status(200).json(u)
+    })
+    .catch(err => {
+      res.status(500).json({ message: "There was an error retrieiving all users." })
+    })
+})
 
 router.post('/register', (req, res) => {
     // implement registration
@@ -36,30 +36,30 @@ router.post('/register', (req, res) => {
 });
 
 
-// router.post('/login', (req, res) => {
-//     // implement login
-//     let { email, password } = req.body; // << deconstruct the username & pw from the body
-//     console.log("Username: " + email, "Password " + password)
+router.post('/login', (req, res) => {
+    // implement login
+    let { email, password } = req.body; // << deconstruct the username & pw from the body
+    console.log("Username: " + email, "Password " + password)
   
-//     Users.findBy({ email }) // << look in our DB for the username provided from the body
-//       .first() // << the first one to match, unique usernames only so there are no dupes
-//       .then(user => {
-//         if(user && bcrypt.compareSync(password, user.password)) {
-//           // if true, create JWT
-//           const token = generateToken(user);
-//           // add that token to the response
-//           res.status(200).json({
-//             message: `Welcome ${user.email}!`,
-//             token
-//           });
-//         } else {
-//           res.status(401).json({ message: "Invalid Credentials" })
-//         }
-//       })
-//       .catch(err => {
-//         res.status(500).json({ message: "There was a server error when loggin in." })
-//       })
-//   });
+    Users.findBy({ email }) // << look in our DB for the username provided from the body
+      .first() // << the first one to match, unique usernames only so there are no dupes
+      .then(user => {
+        if(user && bcrypt.compareSync(password, user.password)) {
+          // if true, create JWT
+          const token = generateToken(user);
+          // add that token to the response
+          res.status(200).json({
+            message: `Welcome ${user.email}!`,
+            token
+          });
+        } else {
+          res.status(401).json({ message: "Invalid Credentials" })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: "There was a server error when loggin in." })
+      })
+  });
   
 
 

@@ -15,6 +15,21 @@ router.get('/', authenticate, (req, res) => {
 });
 
 
+// POST add new trip
+router.post('/add', (req, res) => {
+
+    let newTrip = req.body;
+
+    Trips.add(newTrip)
+        .then(t => {
+            res.status(201).json(t)
+        })
+        .catch(err => {
+            res.status(500).json({ message: "There was an error adding that trip."
+        })
+        })
+})
+
 // PUT (update) the trip
 router.put('/:id', async (req, res) => {
     const { id } = req.params;

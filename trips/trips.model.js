@@ -1,13 +1,20 @@
 const db = require('../database/dbConfig.js');
 
 module.exports = {
+   add,
     find,
     findBy,
     findById,
     update,
-    remove
+    remove,
+    
   };
   
+  async function add(trip) {
+    const [id] = await db('trips').insert(trip, 'id')
+    
+    return findById(id)
+    }
 
   function find() {
     return db('trips').select('id', 'name');
