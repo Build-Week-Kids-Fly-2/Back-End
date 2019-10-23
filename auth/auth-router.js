@@ -79,7 +79,7 @@ function generateToken(user) {
   
     // 3 Create option(s)
     const options = {
-      expiresIn: '1h', // < adds a claim of the expiration time
+      expiresIn: '1d', // < adds a claim of the expiration time
     }
   
     return jwt.sign(payload, secrets.jwtSecret, options)
