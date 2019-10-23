@@ -2,27 +2,61 @@
 
 # Endpoints
 
-### GET all Travelers - https://evening-island-60784.herokuapp.com/api/users
+## GETS
 
-> Returns an array of travelers with id, email and password. Password will be hidden once I have implemented authentication
+### GET all TRAVELER(s) - requires authentication
+
+> /api/users
 >
-> ```javascript
+>  Returns an array of objects
+>
+> Example:
+>
+> ```json
 > [
-> {
-> "id": 1,
-> "email": "test@test.com",
-> "password": "password"
-> },
-> {
-> "id": 2,
-> "email": "backup@test.com",
-> "password": "password"
-> },
-> {
-> "id": 3,
-> "email": "tester@test.com",
-> "password": "password"
-> }
+>   {
+>     "id": 1,
+>     "email": "test@test.com",
+>     "password": "password"
+>   },
+>   {
+>     "id": 2,
+>     "email": "backup@test.com",
+>     "password": "password"
+>   },
+>   {
+>     "id": 3,
+>     "email": "tester@test.com",
+>     "password": "password"
+>   },
+>   {
+>     "id": 4,
+>     "email": "test123456",
+>     "password": "$2a$08$vHH2HJWe0jz3V3JTIWu4ieyWdQ0fApALA/vYuM0Xkbog1H1oTQgke"
+>   }
+> ]
+> ```
+>
+> 
+
+### GET all TRIPS
+
+> /api/trips
+>
+>  Returns an array of objects
+>
+> Example:
+>
+> ```json
+> [
+>   {
+>     "id": 1,
+>     "name": "Bens updated trip"
+>   },
+>   {
+>     "id": 3,
+>     "name": "Cape Town South Africa"
+>   }
 > ]
 > ```
 >
@@ -30,39 +64,225 @@
 
 
 
-### Traveler Login - https://evening-island-60784.herokuapp.com/api/auth 
 
-> REGISTER a traveler
+
+### GET all User_Trips
+
+> /api/user_trips
 >
-> -  https://evening-island-60784.herokuapp.com/api/auth/register 
+>  Returns an array of objects
 >
-> LOGIN as a traveler 
+> Example:
 >
-> -  https://evening-island-60784.herokuapp.com/api/auth/login 
-
-
-
-
-
-### GET all Administrators -  https://evening-island-60784.herokuapp.com/api/auth/admin 
-
-> REGISTER an admin
+> ```json
+> [
+>   {
+>     "id": 1,
+>     "email": "test@test.com",
+>     "password": "password"
+>   },
+>   {
+>     "id": 2,
+>     "email": "backup@test.com",
+>     "password": "password"
+>   },
+>   {
+>     "id": 3,
+>     "email": "tester@test.com",
+>     "password": "password"
+>   },
+>   {
+>     "id": 4,
+>     "email": "test123456",
+>     "password": "$2a$08$vHH2HJWe0jz3V3JTIWu4ieyWdQ0fApALA/vYuM0Xkbog1H1oTQgke"
+>   }
+> ]
+> ```
 >
-> -   https://evening-island-60784.herokuapp.com/api/auth/admin/register 
+> 
+
+### GET all ADMIN (stretch)
+
+> /api/auth/admin
 >
-> LOGIN as a admin
+> Returns an array of objects
 >
-> -  https://evening-island-60784.herokuapp.com/api/auth/admin/login
+> Example:
+>
+> ```json
+> [
+>   {
+>     "id": 1,
+>     "airport": "SFO",
+>     "departureTime": "12:20PM",
+>     "children": 2
+>   },
+>   {
+>     "id": 2,
+>     "airport": "LAX",
+>     "departureTime": "12:20AM",
+>     "children": 1
+>   },
+>   {
+>     "id": 3,
+>     "airport": "JFK",
+>     "departureTime": "12:02PM",
+>     "children": 3
+>   },
+> ]
+> ```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-### GET all trips -  https://evening-island-60784.herokuapp.com/api/trips 
+## POSTS
 
-> I am currently working on the endpoints to ADD, EDIT and DELETE a trip
+### Register a new Traveler
+
+> /api/auth/register
+>
+> Requirements: email, password, fullName, address, phone, localAirport
+> ID's: are auto-increment (create on their own)
+>
+> Example of required data:
+>
+> ```json
+> {
+> 	"email": "example",
+> 	"password":	"example",
+> 	"fullName": "example",
+> 	"address": "example",	
+> 	"phone": "123-456-7890",	
+> 	"localAirport": "example"
+> }
+> ```
+>
+> 
+
+### Login as a Traveler
+
+> /api/auth/login
+>
+> Requirements: valid email, password
+>
+> Example or login data:
+>
+> ```json
+> {
+> 	"email": "email",
+> 	"password":	"password",
+> }
+> ```
+>
+> 
+
+### Create a new User_Trip
+
+> /api/user_trips/add
+>
+> Requires: airport, airline, flightNumber, departureTime, carryOnBags (integer), checkedBags (integer), children (integer), arrived (boolean), en_route (boolean)
+>
+> - ID is auto-increment
+>
+> Example of required data:
+>
+> ```json
+>    {
+>     "airport": "JFKs",
+>     "airline": "Alaskan",
+>     "flightNumber": "KF202",
+>     "departureTime": "12:02PM",
+>     "carryOnBags": 0,
+>     "checkedBags": 1,
+>     "children": 3,
+>     "arrived": 0,
+>     "en_route": 0
+>   }
+> ```
+>
+> 
+
+### Create a new Trip
+
+> /api/trips/add
+>
+> Requirements: name only
+>
+> ID = auto-increment
+>
+> Example of required info:
+>
+> ```json
+>  {
+> 	"name": "Test Doc Tripss"
+>   }
+> ```
+>
+> 
 
 
 
-### GET all User Trips -  https://evening-island-60784.herokuapp.com/api/user_trips 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-> I am currently working on the endpoints to ADD, EDIT and DELETE a trip
 
+
+## PUTS / UPDATES
+
+### Update a User_Trip by id
+
+> /api/user_trips/:id 
+>
+> Requires: airport, airline, flightNumber, departureTime, carryOnBags (integer), checkedBags (integer), children (integer), arrived (boolean), en_route (boolean)
+>
+> Example of required data:
+>
+> ```json
+> {
+>   "airport": "UPDATE",
+>   "airline": "UPDATE",
+>   "flightNumber": "UPDATE",
+>   "departureTime": "UPDATE",
+>   "carryOnBags": 5,
+>   "checkedBags": 7,
+>   "children": 5,
+>   "arrived": 1,
+>   "en_route": 1
+> }
+> ```
+>
+> 
+
+### Update a Trip
+
+> /api/trips/:id
+>
+> Requires: name only
+>
+> Example of required data:
+>
+> ```json
+> {
+> 	"name": "Lets update the trip name"
+> }
+> ```
+>
+> 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## DELETES
+
+### Delete a User_Trip by ID
+
+> /api/user_trips/:id 
+
+### Delete a Trip by ID
+
+> /api/trips/:id 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
