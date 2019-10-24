@@ -14,7 +14,7 @@ router.get('/admin', (req, res) => {
                     res.status(200).json({ id, username })
                 })
             } else {
-                res.status(401).json({ message: "You shall not pass." })
+                res.status(401).json({ message: "Ah ah ah, you didn't say the magic word. })
             }
         })
         .catch(err => {

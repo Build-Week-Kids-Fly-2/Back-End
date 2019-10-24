@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
         if(err) {
             // foul play
-            res.status(401).json({ message: "You shall not pass!" })
+            res.status(401).json({ message: "Ah ah ah, you didn't say the magic word." })
         } else {
             // safe token
             res.email = decodedToken.email;
