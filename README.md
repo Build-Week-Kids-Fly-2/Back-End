@@ -4,7 +4,7 @@
 
 ## GETS
 
-### GET all TRAVELER(s) - requires authentication
+### GET all TRAVELER(s) - requires Authorization Header token from login
 
 > /api/users
 >
@@ -39,8 +39,7 @@
 >
 > 
 
-### GET all TRIPS
-
+### GET all TRIPS - requires Authorization Header token from login
 > /api/trips
 >
 >  Returns an array of objects
@@ -66,7 +65,7 @@
 
 
 
-### GET all User_Trips
+### GET all User_Trips - requires Authorization Header token from login
 
 > /api/user_trips
 >
